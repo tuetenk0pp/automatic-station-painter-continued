@@ -1,0 +1,7 @@
+---------------------------------------------------------------------------------------------------
+Version: 1.0.0
+Date: 2020.04.24
+  Features:
+    - Automagically paints stations;
+    - Customizable blend ratio to control the station's rate of color change;
+    - Supports Factorio 0.18

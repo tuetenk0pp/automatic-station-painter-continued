@@ -1,0 +1,10 @@
+{
+  "name": "automatic-station-painter",
+  "title": "Automatic Station Painter",
+  "version": "1.0.0",
+  "factorio_version": "0.18",
+  "author": "doktorstick",
+  "homepage": "https://bitbucket.org/doktorstick/automatic-station-painter",
+  "description": "Automagically colors stations based on the train's contents.",
+  "dependencies": ["base >= 0.18.0", "?Automatic_Train_Painter >= 0.3.7"]
+}
