@@ -12,6 +12,14 @@ script.on_init (function ()
     global.train_at_station = {}
 end)
 
+--[[--
+TODO: If trains are picked up at stations, the train.id will remain
+  in the global.train_at_station table. Consider handling the
+  various mined events and remove the train.id from the table.
+  Alternatively, always clear the table on reload.
+--]]--
+
+
 script.on_event (defines.events.on_tick, function(event)
     -- Useful for development to reset state.
 
@@ -40,13 +48,15 @@ script.on_event (defines.events.on_train_changed_state, function (event)
         -- Save off the station and information on the train at
         -- the time of its arrival. It'll be used in determining
         -- how to paint that said station.
-        local train_color, train_empty = train_color_info (train)
+        if train.station ~= nil and train.station.valid then
+            local train_color, train_empty = train_color_info (train)
 
-        global.train_at_station[train.id] = {
-            train_color = train_color,
-            train_empty = train_empty,
-            station = train.station
-        }
+            global.train_at_station[train.id] = {
+                train_color = train_color,
+                train_empty = train_empty,
+                station = train.station
+            }
+        end
     elseif train.state == defines.train_state.on_the_path
             and not train.manual_mode then
         -- Because ATS is optionally dependent on ATP, the event order will
@@ -56,7 +66,9 @@ script.on_event (defines.events.on_train_changed_state, function (event)
         -- The station to paint will be the previous station, which
         -- has been saved off in the global table.
         local station_data = global.train_at_station[train.id]
-        if station_data ~= nil and station_data["station"].valid then
+        if station_data ~= nil
+                and station_data.station ~= nil
+                and station_data.station.valid then
             paint_station (station_data, train)
         end
         global.train_at_station[train.id] = nil
