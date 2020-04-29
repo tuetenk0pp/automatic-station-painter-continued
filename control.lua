@@ -109,6 +109,7 @@ function paint_station (station_data, train)
     local train_prev_empty = station_data["train_empty"]
     local station = station_data["station"]
 
+    local train_color
     local train_curr_color, train_curr_empty = train_color_info (train)
 
     if train_prev_empty and train_curr_empty then
@@ -124,17 +125,19 @@ function paint_station (station_data, train)
         train_color = train_curr_color
     end
 
-    if station.color ~= nil then
-        -- We continually mix the colors each time to account
-        -- for stations that provide/receive different shipment types.
-        -- Weigh it in favor of the train.
-        local blend_ratio = settings.global["blend-ratio"].value
+    if train_color then
+        if station.color ~= nil then
+            -- We continually mix the colors each time to account
+            -- for stations that provide/receive different shipment types.
+            -- Weigh it in favor of the train.
+            local blend_ratio = settings.global["blend-ratio"].value
 
-        station.color = blend_colors (station.color, train_color, blend_ratio)
-    else
-        -- If a color has never been set, default it to the color
-        -- chosen by the train's contents (or lack thereof).
-        station.color = train_color
+            station.color = blend_colors (station.color, train_color, blend_ratio)
+        else
+            -- If a color has never been set, default it to the color
+            -- chosen by the train's contents (or lack thereof).
+            station.color = train_color
+        end
     end
 end
 
