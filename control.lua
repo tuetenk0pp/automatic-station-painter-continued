@@ -12,30 +12,13 @@ script.on_init (function ()
     global.train_at_station = {}
 end)
 
+
 --[[--
 TODO: If trains are picked up at stations, the train.id will remain
   in the global.train_at_station table. Consider handling the
   various mined events and remove the train.id from the table.
   Alternatively, always clear the table on reload.
 --]]--
-
-
-script.on_event (defines.events.on_tick, function(event)
-    -- Useful for development to reset state.
-
-    -- Tracks data about trains at stations. This is used to
-    -- reference the last station the train was at once it leaves
-    -- the station and ATP paints the train.
-    if DEVELOP then
-        global.train_at_station = {}
-    end
-
-    -- For debugging; see the topmost comment in this file.
-    print (script.get_event_order())
-
-    -- And then disable the event callback.
-    script.on_event (defines.events.on_tick, nil)
-end)
 
 
 script.on_event (defines.events.on_train_changed_state, function (event)
