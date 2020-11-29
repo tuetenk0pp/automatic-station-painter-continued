@@ -1,3 +1,4 @@
+## This is the continued Version of **Automatic Station Painter** by **doktorstick**
 **Automatic Station Painter** updates the colors of train stations based on the color of the trains. It works best with **[Automatic Train Painter](https://mods.factorio.com/mod/Automatic_Train_Painter)**, though it isn't required.
 
 The painting logic follows:
@@ -9,3 +10,5 @@ The painting logic follows:
 The mod has a map setting--the color blend ratio--that allows you to control how quickly the station's color converges to that of the train.
 
 _Thumbnail created by [yeahtoast](https://mods.factorio.com/user/yeahtoast)_.
+
+_This mod was initially made by **doktorstick**. Find the Code [here](https://bitbucket.org/doktorstick/automatic-station-painter/src/master/)._
