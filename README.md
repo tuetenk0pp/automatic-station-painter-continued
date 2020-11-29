@@ -1,4 +1,4 @@
-## This is the continued Version of **Automatic Station Painter** by **doktorstick**
+## This is the continued Version of **Automatic Station Painter** by **[Murdersquish](https://mods.factorio.com/user/Murdersquish)**
 **Automatic Station Painter** updates the colors of train stations based on the color of the trains. It works best with **[Automatic Train Painter](https://mods.factorio.com/mod/Automatic_Train_Painter)**, though it isn't required.
 
 The painting logic follows:
